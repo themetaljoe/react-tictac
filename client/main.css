@@ -1,4 +1,22 @@
-* {
-    padding: 0;
-    margin: 0;
+.board{
+    display: flex;
+    width: 600px;
+    height: 600px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.square {
+    height: 200px;
+    width: 200;
+    box-sizing: border-box;
+    border: 5px solid black;
+    font-size: 5em;
+    align-items: center;
+    justify-content: center;
+}
+.square: hover {
+  background-color: aqua;
+  cursor: pointer;
+  opacity: .5;
 }
