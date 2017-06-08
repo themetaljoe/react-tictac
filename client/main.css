@@ -1,4 +1,10 @@
-.board{
+*{
+  padding: 5px;
+  margin: 0px;
+  background-color: white;
+  
+}
+#board{
     display: flex;
     width: 600px;
     height: 600px;
@@ -9,14 +15,14 @@
 .square {
     height: 200px;
     width: 200;
-    box-sizing: border-box;
+    box-sizing: border-box; 
     border: 5px solid black;
     font-size: 5em;
     align-items: center;
     justify-content: center;
 }
-.square: hover {
+.square:hover {
   background-color: aqua;
   cursor: pointer;
-  opacity: .5;
+
 }
