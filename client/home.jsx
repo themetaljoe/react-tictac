@@ -1,13 +1,24 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { render } from 'react-dom';
+import ReactDOM, { render } from 'react-dom';
 import Game from './game';
 
- export default class Home extends React.Dom {
-   
+// size may also be a plain string using the presets 'large' or 'compact'
+const size = {
+  width: '80%',
+  height: 80,
+};
+const view = 'list'; // or 'coverart'
+const theme = 'black'; // or 'white'
+ 
+
+export default class Home extends React.Component {
    render() {
-    <Game/>
-        document.getElementById('App')
-   };
-   
+     return (
+       <div>
+         <div className="home">
+           <Game />
+         </div>  
+       </div>
+     );
+   }
  }
