@@ -5,6 +5,7 @@
 .board{
   width: 630px;
   height: 600px;
+  padding-left: 160px;
 }
 .square {
   position: relative;

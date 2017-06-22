@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 
 const check = [[0,1,2],[0,3,6], [0,4,8], [1,4,7], [2,4,6], [2,5,8], [3,4,5], [6,7,8]];
+const grid = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 export default class Game extends React.Component {
   constructor(props) {
@@ -26,12 +27,23 @@ export default class Game extends React.Component {
       })
     }
   }
-  
+
   computerMove() {
     if (this.state.currentTurn !== this.state.playerTwoSymbol) return false;
     
+   /* else {
+      if (this.state.board[index] === "") {
+        return Math.random(this.state.playerTwoSymbol[index]);
+      }
+    }*/
   }
   
+  computerAi() {
+    if (this.computerMove !== false)
+      return (Math.floor(Math.random(grid) * 9));
+
+  }
+ 
   checkForWinner() {
     const allRules = check.map(coordinateSet => this.checkBoardForCoordinates(coordinateSet));
     return allRules.filter(rule => rule).length > 0;
@@ -45,6 +57,7 @@ export default class Game extends React.Component {
   render() {
     this.computerMove();
     console.log(this.checkForWinner());
+    console.log(this.computerAi());
 
     return (
       <div>
