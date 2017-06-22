@@ -36,7 +36,15 @@ export default class Game extends React.Component {
     const allRules = check.map(coordinateSet => this.checkBoardForCoordinates(coordinateSet));
     return allRules.filter(rule => rule).length > 0;
   }
-  
+    endGame() {
+        if (this.checkForWinner !== false) {
+          return 
+            throw ("Winner")
+            document.location.reload();
+        }
+        
+    }
+
   checkBoardForCoordinates(coords) {
     const coordinateSet = coords.map(coordinate => this.state.board[coordinate]);
     return !!coordinateSet.reduce((a, b) => (a === b) && a !== "" ? a : NaN);
@@ -44,8 +52,8 @@ export default class Game extends React.Component {
 
   render() {
     this.computerMove();
-    console.log(this.checkForWinner());
-
+    this.endGame();
+      
     return (
       <div>
         <div className="board">
@@ -62,14 +70,9 @@ export default class Game extends React.Component {
               })
           }
         </div>
+
       </div>
     );
   };
       
-}
-
-
-
-
-          
-    
+} 
