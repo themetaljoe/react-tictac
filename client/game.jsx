@@ -39,9 +39,10 @@ export default class Game extends React.Component {
   }
   
   computerAi() {
-    if (this.computerMove !== false)
-      return (Math.floor(Math.random(grid) * 9));
-
+    if (this.computerMove !== false) {
+    //  if (this.state.board[index] === "")
+        return (Math.floor(Math.random(grid) * 9)) ;
+    }
   }
  
   checkForWinner() {
