@@ -29,7 +29,7 @@ export default class Game extends React.Component {
   }
 
   computerMove() {
-    if (this.state.currentTurn !== this.state.playerTwoSymbol) return false;
+    return this.state.currentTurn === this.state.playerTwoSymbol;
     
    /* else {
       if (this.state.board[index] === "") {
@@ -39,9 +39,19 @@ export default class Game extends React.Component {
   }
   
   computerAi() {
-    if (this.computerMove !== false) {
+    console.log('yo', this.computerMove())
+    if (this.computerMove()) {
     //  if (this.state.board[index] === "")
-        return (Math.floor(Math.random(grid) * 9)) ;
+      const result = grid.map(num => this.state.board[num] === "" ? num : false)
+        .filter(num => num);
+      const move = Math.floor(Math.random() * result.length);
+      console.log(result[move])
+      const board = this.state.board;
+      board[result[move]] = this.playerTwoSymbol;
+      this.setState({
+        board
+        
+      })
     }
   }
  
@@ -50,6 +60,12 @@ export default class Game extends React.Component {
     return allRules.filter(rule => rule).length > 0;
   }
   
+  endGame() {
+    if (this.checkForWinner()) {
+      document.location.reload();
+    }
+  }
+
   checkBoardForCoordinates(coords) {
     const coordinateSet = coords.map(coordinate => this.state.board[coordinate]);
     return !!coordinateSet.reduce((a, b) => (a === b) && a !== "" ? a : NaN);
@@ -57,8 +73,8 @@ export default class Game extends React.Component {
 
   render() {
     this.computerMove();
+    this.endGame();
     console.log(this.checkForWinner());
-    console.log(this.computerAi());
 
     return (
       <div>
@@ -76,14 +92,9 @@ export default class Game extends React.Component {
               })
           }
         </div>
+
       </div>
     );
   };
       
-}
-
-
-
-
-          
-    
+} 
